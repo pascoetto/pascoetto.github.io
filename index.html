@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<script>
+window.location.replace(
+"https://script.google.com/macros/s/AKfycbzkLLdAr8MgzFkn0-rIeN8eS8RnzuVDoEfxSEC1SjcVwh5jKOYDNjigvNVi3fVS9CAChg/exec"
+);
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -65,54 +70,12 @@
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Setor Indaiatuba</h1>
-    <p>Instale este aplicativo na tela inicial do seu celular.</p>
-
-    <button id="installBtn" style="display:none;">
-        Instalar Aplicativo
-    </button>
-</div>
-
 <script>
-let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-
-    installBtn.style.display = 'inline-block';
-});
-
-installBtn.addEventListener('click', async () => {
-    if (!deferredPrompt) return;
-
-    deferredPrompt.prompt();
-
-    const { outcome } = await deferredPrompt.userChoice;
-
-    console.log('Resultado da instalação:', outcome);
-
-    deferredPrompt = null;
-    installBtn.style.display = 'none';
-});
-
-window.addEventListener('appinstalled', () => {
-    console.log('PWA instalado com sucesso');
-});
+window.location.replace(
+"https://script.google.com/macros/s/AKfycbzkLLdAr8MgzFkn0-rIeN8eS8RnzuVDoEfxSEC1SjcVwh5jKOYDNjigvNVi3fVS9CAChg/exec"
+);
 </script>
 
-<script>
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-            .then(reg => console.log('Service Worker registrado'))
-            .catch(err => console.log(err));
-    });
-}
-</script>
-
+<p>Carregando...</p>
 </body>
 </html>

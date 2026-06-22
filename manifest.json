@@ -1,7 +1,7 @@
 {
   "name": "Setor Indaiatuba",
   "short_name": "MeuApp",
-  "start_url": "https://script.google.com/macros/s/AKfycbzkLLdAr8MgzFkn0-rIeN8eS8RnzuVDoEfxSEC1SjcVwh5jKOYDNjigvNVi3fVS9CAChg/exec",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0066cc",

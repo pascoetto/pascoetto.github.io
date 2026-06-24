@@ -1,11 +1,13 @@
 {
-  "name": "Setor Indaiatuba | SUL l",
-  "short_name": "Setor Indaiatuba",
-  "description": "Aplicação Web",
+  "name": "Portal de Acesso",
+  "short_name": "Portal",
+  "description": "Acesso rápido ao sistema",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1565c0",
+  "orientation": "portrait",
+  "background_color": "#0d47a1",
+  "theme_color": "#0d47a1",
   "icons": [
     {
       "src": "icon-192.png",

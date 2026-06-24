@@ -1,58 +1,153 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Setor Indaiatuba | SUL l</title>
+<title>Portal de Acesso</title>
 
-    <link rel="manifest" href="manifest.json">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d47a1">
 
-    <meta name="theme-color" content="#1565c0">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-    <link rel="apple-touch-icon" href="icon-192.png">
+body{
+    background:linear-gradient(135deg,#0d47a1,#1976d2);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.card{
+    width:90%;
+    max-width:400px;
+    background:white;
+    color:#333;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.logo{
+    width:100px;
+    height:100px;
+    border-radius:25px;
+    margin:auto;
+    margin-bottom:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#1976d2;
+    color:white;
+    font-size:40px;
+    font-weight:bold;
+}
+
+h1{
+    margin-bottom:10px;
+}
+
+p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    margin-top:10px;
+}
+
+.primary{
+    background:#1976d2;
+    color:white;
+}
+
+.install{
+    background:#43a047;
+    color:white;
+    display:none;
+}
+
+.footer{
+    margin-top:20px;
+    font-size:12px;
+    color:#888;
+}
+</style>
 </head>
+
 <body>
 
-    <h1>Setor Indaiatuba | SUL l</h1>
+<div class="card">
 
-<button onclick="window.location.href='https://script.google.com/macros/s/AKfycbzkLLdAr8MgzFkn0-rIeN8eS8RnzuVDoEfxSEC1SjcVwh5jKOYDNjigvNVi3fVS9CAChg/exec'">
-Abrir Sistema
-</button>
+    <div class="logo">A</div>
 
-    <script>
-        let deferredPrompt;
+    <h1>Portal de Acesso</h1>
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
+    <p>
+        Instale o aplicativo para acesso rápido ao sistema.
+    </p>
 
-            document.getElementById('installBtn').style.display = 'block';
-        });
+    <button class="btn primary" onclick="abrirSistema()">
+        Entrar no Sistema
+    </button>
 
-        document.getElementById('installBtn').addEventListener('click', async () => {
+    <button id="installBtn" class="btn install">
+        Instalar Aplicativo
+    </button>
 
-            deferredPrompt.prompt();
+    <div class="footer">
+        Versão 1.0
+    </div>
 
-            const result = await deferredPrompt.userChoice;
+</div>
 
-            if(result.outcome === 'accepted'){
-                console.log('PWA instalado');
-            }
+<script>
+const URL_APP =
+"https://script.google.com/macros/s/AKfycbzkLLdAr8MgzFkn0-rIeN8eS8RnzuVDoEfxSEC1SjcVwh5jKOYDNjigvNVi3fVS9CAChg/exec";
 
-            deferredPrompt = null;
-        });
+function abrirSistema(){
+    window.location.href = URL_APP;
+}
 
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js');
-        }
+let deferredPrompt;
 
-        // Redireciona automaticamente para o Apps Script
-        setTimeout(() => {
-            window.location.href =
-            "https://script.google.com/macros/s/AKfycbzkLLdAr8MgzFkn0-rIeN8eS8RnzuVDoEfxSEC1SjcVwh5jKOYDNjigvNVi3fVS9CAChg/exec";
-        }, 1500);
-    </script>
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    document.getElementById('installBtn').style.display='block';
+});
+
+document.getElementById('installBtn').addEventListener('click', async () => {
+
+    if(!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+});
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js');
+}
+</script>
 
 </body>
 </html>

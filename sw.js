@@ -1,9 +1,11 @@
-self.addEventListener('install', () => {
+const CACHE = "portal-v1";
+
+self.addEventListener("install", event => {
     self.skipWaiting();
 });
 
-self.addEventListener('activate', () => {
-    console.log('Service Worker ativo');
+self.addEventListener("activate", event => {
+    clients.claim();
 });
 
-self.addEventListener('fetch', () => {});
+self.addEventListener("fetch", event => {});
